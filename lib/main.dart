@@ -13,48 +13,78 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  void _answerQuestion() {
+  var _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
   }
+
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
       'answers': [
-        'Black',
-        'white',
-        'red',
-        'green',
-      ],
-    },
-    {
-      'questionText': 'What\'s your favorite laptop?',
-      'answers': [
-        'acer',
-        'dell',
-        'apple',
-        'samsung',
-      ],
-    },
-    {
-      'questionText': 'What\'s your favorite book?',
-      'answers': [
-        'paper-book & new',
-        'e-book & old',
-        'paper-book & old',
-        'e-book & new',
+        {
+          'text': 'Black',
+          'score': 10,
+        },
+        {
+          'text': 'red',
+          'score': 5,
+        },
+        {
+          'text': 'green',
+          'score': 3,
+        },
+        {
+          'text': 'white',
+          'score': 1,
+        },
       ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
       'answers': [
-        'cat',
-        'dog',
-        'chicken',
-        'horse',
+        {
+          'text': 'Rabbit',
+          'score': 10,
+        },
+        {
+          'text': 'Snake',
+          'score': 5,
+        },
+        {
+          'text': 'Elephant',
+          'score': 3,
+        },
+        {
+          'text': 'Lion',
+          'score': 1,
+        },
       ],
-    }
+    },
+    {
+      'questionText': 'What\'s your favorite instructor?',
+      'answers': [
+        {
+          'text': 'Max',
+          'score': 10,
+        },
+        {
+          'text': 'Max',
+          'score': 5,
+        },
+        {
+          'text': 'Max',
+          'score': 3,
+        },
+        {
+          'text': 'Max',
+          'score': 1,
+        },
+      ],
+    },
   ];
 
   @override
@@ -70,7 +100,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion,
               )
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
